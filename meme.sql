@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 12 juin 2018 à 12:27
+-- Généré le :  mar. 12 juin 2018 à 12:55
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `images` (
   `ima_category` varchar(255) NOT NULL,
   `ima_title` varchar(255) NOT NULL,
   `ima_url` varchar(255) NOT NULL,
+  `ima_date` varchar(255) NOT NULL,
   PRIMARY KEY (`id_images`),
   UNIQUE KEY `id_images_UNIQUE` (`id_images`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -51,6 +52,8 @@ CREATE TABLE IF NOT EXISTS `memes` (
   `mem_description` longtext NOT NULL,
   `mem_text` varchar(255) NOT NULL,
   `mem_blob` blob NOT NULL,
+  `mem_date_creation` varchar(255) NOT NULL,
+  `mem_date_update` varchar(255) NOT NULL,
   PRIMARY KEY (`id_memes`),
   UNIQUE KEY `id_memes_UNIQUE` (`id_memes`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
