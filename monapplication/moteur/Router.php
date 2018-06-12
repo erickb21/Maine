@@ -29,10 +29,10 @@ class Router {
          //echo var_dump($parts);
 
          switch ($parts[0]):
-         case "film" :
+         case "meme" :
              if (count($parts) == 2) 
                 {            
-                $result["controler"] = "Film";
+                $result["controler"] = "Meme";
                 $result["action"] = "display";
                 $result["params"]["id"] = $parts[1]; 
                 //print_r($result);

@@ -5,31 +5,31 @@ class IndexController extends Controler {
     public function display()
     {
         $limit = $this->route["params"]["limit"];
-        $randomFilms = Film::getListRandom($limit);
+        $randommemes = meme::getListRandom($limit);
 
    
         $template = $this->twig->loadTemplate('/index/display.html.twig');
         echo $template->render(array(
-            'randomFilms'  => $randomFilms
+            'randommemes'  => $randommemes
         ));
 
     }
 
     public function initListSearch(){
     $saisie = $this->route["params"]["saisie"];
-    $listeFilms = Film::lookforSearch($saisie);
+    $listememes = meme::lookforSearch($saisie);
     
-//print_r($listeFilms);
-    foreach ($listeFilms as $films ) :
+//print_r($listememes);
+    foreach ($listememes as $memes ) :
 
-    echo $films['id_FILMS'] .':'.$films['titre_FILMS'] .';';
+    echo $memes['id_FILMS'] .':'.$memes['titre_FILMS'] .';';
     endforeach;
 
 
-    //echo $listeFilms;
+    //echo $listememes;
         //    $template = $this->twig->loadTemplate('/index/display.html.twig');
         //echo $template->render(array(
-        //    'randomFilms'  => $randomFilms
+        //    'randommemes'  => $randommemes
         //));
     }
 }

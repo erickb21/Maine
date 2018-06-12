@@ -62,10 +62,10 @@
     <Compile Include="index.php" />
     <Compile Include="initsearch.php" />
     <Compile Include="monapplication\controler\ErrorController.php" />
-    <Compile Include="monapplication\controler\FilmController.php" />
+    <Compile Include="monapplication\controler\MemeController.php" />
     <Compile Include="monapplication\controler\FormController.php" />
     <Compile Include="monapplication\controler\IndexController.php" />
-    <Compile Include="monapplication\model\film.php" />
+    <Compile Include="monapplication\model\meme.php" />
     <Compile Include="monapplication\moteur\Controler.php" />
     <Compile Include="monapplication\moteur\Database.php" />
     <Compile Include="monapplication\moteur\Kernel.php" />
@@ -83,7 +83,7 @@
     <Folder Include="monapplication\moteur\" />
     <Folder Include="monapplication\view\" />
     <Folder Include="monapplication\view\error404\" />
-    <Folder Include="monapplication\view\film\" />
+    <Folder Include="monapplication\view\meme\" />
     <Folder Include="monapplication\view\index\" />
     <Folder Include="monapplication\view\layout\" />
     <Folder Include="Properties\" />
@@ -104,7 +104,7 @@
     <Content Include="js\materialize.min.js" />
     <Content Include="js\script.js" />
     <Content Include="monapplication\view\error404\display.html.twig" />
-    <Content Include="monapplication\view\film\display.html.twig" />
+    <Content Include="monapplication\view\meme\display.html.twig" />
     <Content Include="monapplication\view\index\display.html.twig" />
     <Content Include="monapplication\view\layout\footer.html.twig" />
     <Content Include="monapplication\view\layout\header.html.twig" />

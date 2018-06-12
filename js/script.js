@@ -2,7 +2,7 @@
 var ajaxrequest = new XMLHttpRequest();
 var data;
 var traitement = "";
-addListeFilms();
+addListeMemes();
 
 
 function requestajax(dataToSend, route) {
@@ -61,22 +61,22 @@ function stateComplete() {
 
     function listeNm(tmp) {
         var lstnm = tmp.split(";");
-        document.getElementById("listfilms").innerHTML = "";
+        document.getElementById("listmemes").innerHTML = "";
         //alert(lstnm);
         for (var i = 0; i < lstnm.length; i++) {
-            var infosFilm = lstnm[i].split(":");
-            var listeDeFilms = document.createElement("OPTION");
-            listeDeFilms.setAttribute("value", infosFilm[1]);
-            listeDeFilms.setAttribute("data-idfilm", infosFilm[0]);
-            //listeDeFilms.setAttribute("onclick", "alert('text=' + this.id);");
-            document.getElementById("listfilms").appendChild(listeDeFilms);
-            //alert(infosFilm[0]);
+            var infosMeme = lstnm[i].split(":");
+            var listeDeMeme = document.createElement("OPTION");
+            listeDeMeme.setAttribute("value", infosMeme[1]);
+            listeDeMeme.setAttribute("data-idmeme", infosMeme[0]);
+            //listeDeMeme.setAttribute("onclick", "alert('text=' + this.id);");
+            document.getElementById("listmemes").appendChild(listeDeMeme);
+            //alert(infosMeme[0]);
         }
         //*******************
         var monbouton = document.getElementById("SearchButton");
-        //alert("nbelem = " + document.getElementById("listfilms").options.length);
+        //alert("nbelem = " + document.getElementById("listmemes").options.length);
         
-        if (document.getElementById("listfilms").options.length <= 2) {window.focus();};
+        if (document.getElementById("listmemes").options.length <= 2) {window.focus();};
 
     }
 
@@ -131,39 +131,32 @@ function stateUninitialized() {
 
 // **************************
 
-function addListeFilms() {
-    //alert("addliste");
-    //var divSearchFilm = document.createElement("DIV");
-    //divSearchFilm.setAttribute("id", "searchzone");
-    //divSearchFilm.setAttribute("class", "searchzone");
-    //document.getElementById("formFilmSearch").appendChild(divSearchFilm);
+function addListeMemes() {
+    var rechercheMeme = document.createElement("INPUT");
+    rechercheMeme.setAttribute("id", "search");
+    rechercheMeme.setAttribute("type", "search");
+    rechercheMeme.setAttribute("required","");
+    rechercheMeme.setAttribute("list", "listmemes");
+    rechercheMeme.setAttribute("placeholder", "rechercher un meme");
+    rechercheMeme.setAttribute("onkeyup", "autocompletion(this.value);");
 
-
-    var rechercheFilm = document.createElement("INPUT");
-    rechercheFilm.setAttribute("id", "search");
-    rechercheFilm.setAttribute("type", "search");
-    rechercheFilm.setAttribute("required","");
-    rechercheFilm.setAttribute("list", "listfilms");
-    rechercheFilm.setAttribute("placeholder", "rechercher un film");
-    rechercheFilm.setAttribute("onkeyup", "autocompletion(this.value);");
-
-    document.getElementById("searchzone").appendChild(rechercheFilm);
+    document.getElementById("searchzone").appendChild(rechercheMeme);
     var inhtm = document.getElementById("searchzone").innerHTML;
     document.getElementById("searchzone").innerHTML = inhtm + '<label class="label-icon" for="search"><i id="SearchButton" onclick="chercheInfos();" class="material-icons">search</i></label><i class="material-icons" onclick="clearSearh();" >close</i>';
  
-    var dataListeFilms = document.createElement("DATALIST");
-    dataListeFilms.setAttribute("id", "listfilms");
-    document.getElementById("searchzone").appendChild(dataListeFilms);
+    var dataListeMemes = document.createElement("DATALIST");
+    dataListeMemes.setAttribute("id", "listmemes");
+    document.getElementById("searchzone").appendChild(dataListeMemes);
 
-    var listeDeFilms = document.createElement("OPTION");
-    listeDeFilms.setAttribute("value", "");
-    listeDeFilms.setAttribute("data-idfilm", "");
-    document.getElementById("listfilms").appendChild(listeDeFilms);
+    var listeDeMeme = document.createElement("OPTION");
+    listeDeMeme.setAttribute("value", "");
+    listeDeMeme.setAttribute("data-idmeme", "");
+    document.getElementById("listmemes").appendChild(listeDeMeme);
 }
 
 function clearSearh() {
     document.getElementById("search").value = ""
-    document.getElementById("listfilms").innerHTML=""
+    document.getElementById("listmemes").innerHTML=""
 }
 
 
@@ -180,14 +173,14 @@ function autocompletion(textesaisi) {
 };
 
 function chercheInfos() {
-    var selectionFilm = document.getElementById("listfilms");//document.getElementById("search").value;
+    var selectionMeme = document.getElementById("listmemes");//document.getElementById("search").value;
 
-    //alert("id du film sélectionné " + selectionFilm.options[0].dataset.idfilm);
-    var filmId = "film/" + selectionFilm.options[0].dataset.idfilm;
-    //alert("chemin : " + filmId);
-    window.location = filmId;
+    //alert("id du meme sélectionné " + selectionMeme.options[0].dataset.idmeme);
+    var memeId = "meme/" + selectionMeme.options[0].dataset.idmeme;
+    //alert("chemin : " + memeId);
+    window.location = memeId;
     //return;
-    //data = "infos=" + selectionFilm.options[0].id;//+ "%";
+    //data = "infos=" + selectionMeme.options[0].id;//+ "%";
     //traitement = "getInfos";
     //requestajax(data);
     

@@ -1,8 +1,8 @@
 <?php
 
-class Film extends Model {
+class meme extends Model {
 
-    public static function getFilm( $id ) {
+    public static function getMeme( $id ) {
         $db = Database::getInstance();
         $sql = "SELECT * FROM films WHERE id_FILMS = :id";
         $stmt = $db->prepare($sql);
@@ -77,15 +77,15 @@ class Film extends Model {
 
 }
 
-class searchfilm {
+class searchMeme {
 
-   public static function getInfoFilms($nomfilm){
+   public static function getInfoMemes($nommeme){
 
    $bdd = new PDO('mysql:host=localhost;dbname=base_test;charset=utf8', 'root', '');
       $sql = "SELECT * FROM personne WHERE titre_FILMS = :nmp";
       $stmt = $bdd->prepare($sql);
       $stmt->setFetchMode(PDO::FETCH_ASSOC);//FETCH_ASSOC
-      $stmt->bindValue( ':nmp', $nomfilm, PDO::PARAM_STR); 
+      $stmt->bindValue( ':nmp', $nommeme, PDO::PARAM_STR); 
       $stmt->execute();//array(":id" => $id
       return $stmt->fetchall();
 
