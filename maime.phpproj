@@ -1,0 +1,113 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>maime</Name>
+    <ProjectGuid>{e6f688f4-2a1b-4654-80ff-1b7dcfe77ecd}</ProjectGuid>
+    <RootNamespace>
+    </RootNamespace>
+    <OutputType>Library</OutputType>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{73520F3B-57D4-4D7D-8280-D81F0A3C992B};{349C5851-65DF-11DA-9384-00065B846F21};{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <RuntimeVersion>7.1</RuntimeVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\DEVSENSE\PHP Tools\VS$(VisualStudioVersion)\Devsense.PHP.MsWebApplication.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <ItemGroup>
+    <Compile Include="index.php" />
+    <Compile Include="initsearch.php" />
+    <Compile Include="monapplication\controler\ErrorController.php" />
+    <Compile Include="monapplication\controler\FilmController.php" />
+    <Compile Include="monapplication\controler\FormController.php" />
+    <Compile Include="monapplication\controler\IndexController.php" />
+    <Compile Include="monapplication\model\film.php" />
+    <Compile Include="monapplication\moteur\Controler.php" />
+    <Compile Include="monapplication\moteur\Database.php" />
+    <Compile Include="monapplication\moteur\Kernel.php" />
+    <Compile Include="monapplication\moteur\Model.php" />
+    <Compile Include="monapplication\moteur\Router.php" />
+    <Compile Include="monapplication\moteur\View.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\" />
+    <Folder Include="img\" />
+    <Folder Include="js\" />
+    <Folder Include="monapplication\" />
+    <Folder Include="monapplication\controler\" />
+    <Folder Include="monapplication\model\" />
+    <Folder Include="monapplication\moteur\" />
+    <Folder Include="monapplication\view\" />
+    <Folder Include="monapplication\view\error404\" />
+    <Folder Include="monapplication\view\film\" />
+    <Folder Include="monapplication\view\index\" />
+    <Folder Include="monapplication\view\layout\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include=".htaccess" />
+    <Content Include="composer.json" />
+    <Content Include="composer.lock" />
+    <Content Include="css\materialize.min.css" />
+    <Content Include="css\style.css" />
+    <Content Include="img\bobine.jpg" />
+    <Content Include="img\logo-film.png" />
+    <Content Include="img\salle.jpg" />
+    <Content Include="img\tournage.jpg" />
+    <Content Include="js\init.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\materialize.min.js" />
+    <Content Include="js\script.js" />
+    <Content Include="monapplication\view\error404\display.html.twig" />
+    <Content Include="monapplication\view\film\display.html.twig" />
+    <Content Include="monapplication\view\index\display.html.twig" />
+    <Content Include="monapplication\view\layout\footer.html.twig" />
+    <Content Include="monapplication\view\layout\header.html.twig" />
+    <Content Include="monapplication\view\layout\layout.html.twig" />
+  </ItemGroup>
+</Project>
