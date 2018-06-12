@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 12 juin 2018 à 11:42
+-- Généré le :  mar. 12 juin 2018 à 12:11
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -21,6 +21,21 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `meme`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `images`
+--
+
+DROP TABLE IF EXISTS `images`;
+CREATE TABLE IF NOT EXISTS `images` (
+  `id_images` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ima_category` varchar(255) NOT NULL,
+  `ima_title` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_images`),
+  UNIQUE KEY `id_images_UNIQUE` (`id_images`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
