@@ -2,7 +2,7 @@
 var ajaxrequest = new XMLHttpRequest();
 var data;
 var traitement = "";
-addListeMemes();
+/* addListeMemes(); */
 
 
 function requestajax(dataToSend, route) {
