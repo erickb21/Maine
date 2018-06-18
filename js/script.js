@@ -186,3 +186,22 @@ function chercheInfos() {
     
     return true
 };
+
+function allowDrop(ev) {
+    ev.preventDefault();
+/*     alert("testallowdrop");
+ */}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+/*     alert("testdrag");
+ */
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+/*     alert("testdrop");
+ */
+}

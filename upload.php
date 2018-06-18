@@ -2,6 +2,8 @@
 // Database connexion
 include "bdd/db_connect.php";
 
+$imageCategory = $_POST['imageCategory'];
+$imageName = $_POST['imageName'];
 $target_dir = "img/uploads/";
 $target_file = basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -46,10 +48,11 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFilePath)) {
-        $insert = $db->query("INSERT into images (ima_category, ima_title, ima_url, ima_date) VALUES ('1', '".$target_file."', '".$targetFilePath."', UNIX_TIMESTAMP())");
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        $insert = $db->query("INSERT into images (ima_category, ima_title, ima_url, ima_date) VALUES ('$imageCategory', '".$imageName."', '".$targetFilePath."', UNIX_TIMESTAMP())");
+/*         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+ */        echo "Votre image" .$imageName. "a bien été importé.";
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        echo "Désolé, votre image" .$imageName. "n'a pas pu être importé.";
     }
 }
 ?>
