@@ -3,25 +3,22 @@
 class MemeController extends Controler {
    public function display() {
       $limit= $this->route["params"];
+      $upload = meme::uploadImage();
       $memes = meme::getListAll();
+      $categories = meme::getAllCategories();
       $template = $this->twig->loadTemplate('/meme/display.html.twig');
       echo $template->render(array(
-        'memes' => $memes
-      )); 
+        'categories' => $categories,
+        'memes' => $memes,
+        'upload' => $upload,
+       )); 
    }
 
-      /* public function find() {
-      $slug = $this->route["params"]["titre"];
-      $meme = meme::getMeme($slug);
-      $realisateur = meme::getRealisateur($meme['id_FILMS']);
-      $genre = meme::getGenre($meme['id_FILMS']);
-
+   public function renderMeme(){
+      $generateMeme = meme::generateMeme();
       $template = $this->twig->loadTemplate('/meme/display.html.twig');
       echo $template->render(array(
-        'meme' => $meme,
-        'realisateur' => $realisateur,
-        'genre' => $genre
+        'generateMeme' => $generateMeme
       ));
-   } */
-
+   }
 }

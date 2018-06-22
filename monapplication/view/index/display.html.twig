@@ -10,16 +10,16 @@
 <div class="container ptb-50">
   <div class="section">
     <div class="row">
-        <!-- <div class="input-field col s12 m3"> -->
+
           <form method="POST" action="">
-            <div class="col m5">
+            <div class="col m5 s12">
               <select class="browser-default" name="date">
                 <option value="">Triez par Date</option>
                 <option value="DESC">du plus récent au plus ancien</option>
                 <option value="ASC">du plus ancien au plus récent</option>
               </select>
             </div>
-            <div class="col m5">
+            <div class="col m5 s12">
               <select class="browser-default" name="category">
                 <option value="">Sélectionnez la catégorie</option>
                 {% for category in categories %}
@@ -27,45 +27,57 @@
                 {% endfor %}
               </select>
             </div>
-            <div class="col m2 center">
+            <div class="col m2 s6 offset-s3 center">
               <input class="waves-effect btn white valign-wrapper" type="submit" name="submit" value="Valider" id="bouton">
             </div>
           </form>
+          
           <form method="POST" action="">
-            <div class="col m12 mt-100 center">
+            <div class="col m12 s6 offset-s3 mt-100 center">
               <input class="waves-effect btn white" type="submit" name="submit2" value="Afficher tout" id="bouton">
             </div>
           </form>
-        <!-- </div> -->
+      
     </div>
   </div>
   <div class="section">
     <div class="row">
       <h2 class="center grey-text text-darken-4 pb-60 separator">Memes</h2>
       {% for meme in memes %}
-        <!-- <div class="col s12 m5">
-          <div class="card hoverable">
-            <div class="card-image">
-              <img class="hAuto w100" src="{{ meme.ima_url }}" alt="{{ meme.ima_title }}">     
-            </div>
-          </div>
-        </div> -->
       <div class="container-fluid">
-          <div class="col s12 m6">
+        
+        <!-- Medium & Large screen only -->
+          <div class="col m6 hide-on-small-only">
             <div class="card small horizontal">
               <div class="card-image">
-                <img src="{{ meme.ima_url }}">
-                <span class="card-title">{{ meme.ima_title }}</span>
+                <img src="{{ meme.mem_url }}">
+                <span class="card-title">{{ meme.mem_title }}</span>
               </div>
               <div class="card-content col m6">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively.</p>
+                <p>Description: {{ meme.mem_description }}</p>
               </div>
               <div class="card-action">
-                <a href="{{ meme.ima_url }}">Lien</a>
+                <a href="{{ meme.mem_url }}">Lien</a>
               </div>
             </div>
           </div>
+
+          <!-- Small screen only -->
+          <div class="col s12 hide-on-med-and-up">
+            <div class="card small">
+              <div class="card-image">
+                <img src="{{ meme.mem_url }}">
+                <span class="card-title">{{ meme.mem_title }}</span>
+              </div>
+              <div class="card-content col s12">
+                <p>Description: {{ meme.mem_description }}</p>
+              </div>
+              <div class="card-action">
+                <a href="{{ meme.mem_url }}">Lien</a>
+              </div>
+            </div>
+          </div>
+
         </div>
       {% endfor %} 
     </div>

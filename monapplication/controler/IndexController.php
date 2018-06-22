@@ -10,20 +10,18 @@ class IndexController extends Controler {
             $memes = meme::getSearch($_POST, $limit);
         }else{
             $limit = $this->route["params"]["limit"];
-            $memes = meme::getListRandom($limit);
+            $memes = meme::getRandomMemes($limit);
         }
 
         if(isset($_POST['submit2'])){
-            $memes = meme::getListAll();
+            $memes = meme::getAllMemes();
         }
 
-        
         $categories = meme::getAllCategories();
         $template = $this->twig->loadTemplate('/index/display.html.twig');
         echo $template->render(array(
             'categories' => $categories,
-            'memes'  => $memes
-            
+            'memes'  => $memes,
         ));  
     }
 }

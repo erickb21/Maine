@@ -13,12 +13,37 @@ class Router {
             $result["controler"] = "Index";
             $result["action"] = "initListSearch";
             $result["params"]["saisie"] =$saisie;
+      }
+            
+      $parts = explode("/", $query);
+/*         var_dump($query);
+ */
+      
+/*       var_dump($parts);
+ */
+            if (count($parts == 2))
+            {  
+                  if (($parts[0] == "meme") && ($parts[1] == "creatememe"))
+                  {          
+                        $result["controler"] = "Meme";
+                        $result["action"] = "renderMeme";
+/*                         var_dump($result);
+ */                  }
+
+                  if(($parts[0] == "meme") && ($parts[1] == "uploadimage"))
+                  {
+                        $result["controler"] = "Meme";
+                        $result["action"] = "display";
+/*                      var_dump($parts);
+*/                }
             }
 
-      if($query === "meme"){
-            $result["controler"] = "Meme";
-            $result["action"] = "display";
-            } 
+           if($query === "meme"){
+
+                  $result["controler"] = "Meme";
+                  $result["action"] = "display";
+
+            }
 
       if( $query === "" || $query === "/" ){
          $result["controler"] = "Index";
@@ -26,14 +51,14 @@ class Router {
          //$result["action"] = "random";
          $result["params"]["limit"] = 4;
 
-      } else { 
-            /* $parts = explode("/", $query);
-         if($parts[0] == "meme" && count($parts) == 1) { */
+      } /*else { 
+            $parts = explode("/", $query);
+         if($parts[0] == "meme" && count($parts) == 1) { 
             $result["controler"] = "Meme";
             $result["action"] = "display";
-/*             $result["params"] = $parts[1];            
- */         /* } */
-      }
+             $result["params"] = $parts[1];            
+ */         /* } 
+      }*/
       //print_r($result);
       return $result;
 /*       print_r($result);

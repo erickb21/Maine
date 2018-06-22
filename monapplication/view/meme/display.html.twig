@@ -7,23 +7,94 @@
 {% block content %}  
 <!-- Section Random Meme -->
 
-<div class="container ptb-50">
-  <div class="section">
-    <div class="row">
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Upload Image" name="submit">
-        </form>
-    </div>
-    <div class="row">
-        {% for meme in memes %}
-            <div class="carousel">
-                <img class="h-500 w100 carousel-item" src="{{ meme.ima_url }}" alt="{{ meme.ima_title }}">     
+<div class="container ptb-50" onload="ZoneText();">
+    <div class="section">
+        <div class="row">
+
+            <!-- Medium & Large screen only -->
+            <div id="imgSelector" class="hide-on-small-only col m8 d-flex justify-content-around flex-wrp ovrflowx-scroll h-250">   
+                {% for meme in memes %}
+                    <img class="w30" data-url="{{ meme.ima_url }}" src="{{ meme.ima_url }}" alt="{{ meme.ima_title }}" onclick="ChangeImage('{{ meme.ima_url }}'); currentImagePath='{{ meme.ima_url }}'">
+                {% endfor %}
             </div>
-        {% endfor %}
+            
+            <!-- Small screen only -->
+            <div id="imgSelector" class="hide-on-med-and-up col s12 d-flex justify-content-around flex-wrp ovrflowx-scroll h-250">   
+                {% for meme in memes %}
+                    <img class="col s12" data-url="{{ meme.ima_url }}" src="{{ meme.ima_url }}" alt="{{ meme.ima_title }}" onclick="ChangeImage('{{ meme.ima_url }}'); currentImagePath='{{ meme.ima_url }}'">
+                {% endfor %}
+            </div>
+
+            <div class="col m3 s12 offset-m1 h-250 valign-wrapper">
+
+                <form action="" method="post" enctype="multipart/form-data">
+
+                    <p class="bold dark-gray center fs-11 nomargin">IMPORTER UNE IMAGE*</p>
+                    <p class="center dark-gray fs-9">*Fichiers acceptés: JPG, JPEG et PNG (< 5 mo)</p>
+                    <input class= "pt-10 background-test" type="file" name="fileToUpload" id="fileToUpload">
+
+                    <select class="browser-default center pt-10" name="imageCategory">
+                        <option value="">Sélectionnez la catégorie</option>
+                        {% for category in categories %}
+                            <option value="{{ category.id_categories }}">{{ category.cat_libelle }}</option>  
+                        {% endfor %}
+                    </select>
+
+                    <input class="pt-10 center" type"text" placeholder="Entrez le nom de votre image" name="imageName" value="Entrez le nom de votre image">
+                    <input class="btn col m12 s12 blue darken-1 bold pt-10 center" type="submit" value="Ajouter une image" name="submit">
+                
+                </form>
+                
+            </div>
+        </div>
+        <div class="row pt-25">
+
+            <div id="zone" class="col m8 s12 grey darken-2 h-500 valign-wrapper posRelative">
+                <div class="h-375 card medium col m8 s12 mrgCenter white posRelative">
+                    <img id="imgDisplay" class="h-375 posAbsolute mrgCenter col m12 s12" src="img/meme/imagebydefault.jpg" alt="Sélectionnez une image pour commencer votre Meme">
+                    <div id="zoneTextAlpha" class="h-375 zoneTextAlpha col m12 s12"></div>
+                </div>
+            </div>
+
+            <div class="col m3 offset-m1 white h-500">
+                <div class="col m12 s12 mt-30 brown lighten-5 mrg10">
+                    <input type="text" id="memeTitle"class="center mt-30" placeholder="Entrez le titre de votre Meme" required>
+                    <input type="text" id="memeDescription" class="center mb-30" placeholder="Commentaire" required >
+                </div>
+                <select class="browser-default center pt-10" id="memeCategory">
+                    <option value="">Choisissez la catégorie de votre Meme</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id_categories }}">{{ category.cat_libelle }}</option>  
+                    {% endfor %}
+                </select>
+                <div class="col m12 s12 mt-30">
+                    <a id="addText" class="btn-floating waves-effect waves-light blue darken-1" onclick="CreateZoneTexte()"><i class="material-icons">add</i></a>
+                    <span class="ml-50 bold grey-text ">Ajouter un texte</span>
+                </div>
+                <div class="col m12 s12 mt-30">
+                    <input type="color" id="textColor" class="h-36 w-42" value="#000000" onchange="ChangeColorTextPreview();">
+                    <span class="ml-50 bold grey-text ">Couleur de texte</span>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row pt-25">
+            <div class="col m8 s12">             
+                <button data-target="modal1" class="btn bold light-green darken-2 col m4 offset-m4 s12 modal-trigger" onclick="sendData();">GÉNÉRER VOTRE MEME</button>
+
+                <div id="modal1" class="modal">
+                    <div class="modal-content" id="memeFinalRender">
+                      <h4>Voici votre meme généré:</h4>
+                          <img id="imgFinalRender" src="" alt="meme.jpg">
+                    </div>
+                    <div class="modal-footer">
+                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-    
-    
+
 {% endblock %}
